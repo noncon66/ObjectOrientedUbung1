@@ -1,5 +1,7 @@
 package com.Klaus.Camera;
 
+import java.sql.SQLOutput;
+
 public class Camera_Main {
     public static void main(String[] args) {
 
@@ -8,6 +10,19 @@ public class Camera_Main {
 
         System.out.println(myNikon.getDataSheet());
         System.out.println(mySony.getDataSheet());
+
+        Lens myTamron = new Lens("Tamron", 10, 55);
+
+        System.out.println(myTamron.toString());
+
+        MemoryCard mySandisk = new MemoryCard("Sandisk", 64);
+        MemoryCard mySonySD = new MemoryCard("Sony", 128);
+
+        System.out.println(mySandisk.toString());
+        System.out.println(mySonySD.toString());
+
+
+
 
 
     }
