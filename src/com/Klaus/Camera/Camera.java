@@ -23,19 +23,13 @@ public class Camera {
         return exactName;
     }
 
-    public void setExactName(String exactName) {
-        this.exactName = exactName;
-    }
-
     public float getMegaPixel() {
         return megaPixel;
     }
 
-
     public String getCountryOfOrigin() {
         return countryOfOrigin;
     }
-
 
     public String getFunctions() {
         return functions;
@@ -54,6 +48,10 @@ public class Camera {
         this.owner = owner;
     }
 
+    public String getOwner() {
+        return owner;
+    }
+
     public void setCurrentLens(Lens currentLens) {
         this.currentLens = currentLens;
     }
@@ -62,18 +60,26 @@ public class Camera {
         this.currentMemorycard = currentMemorycard;
     }
 
-    public void takePhoto (){
-
-
+    public void takePhoto() {
+        if (currentMemorycard.getCurrentFreeSpace() <= 5) {
+            System.out.println("nicht genügend Speicher: " + currentMemorycard.getCurrentFreeSpace() +
+                    "MB frei");
+        } else {
+            System.out.println("Klick");
+            currentMemorycard.setCurrentUsedSpace(currentMemorycard.getCurrentUsedSpace() + 5);
+        }
     }
 
-    public void deleteAllPhotos(){
-
-
+    public void deleteAllPhotos() {
+        currentMemorycard.setCurrentUsedSpace(0);
     }
 
-    public void deleteXPhotos(){
-
-
+    public void deleteXPhotos(int numberOfPhotos) {
+        if (currentMemorycard.getCurrentUsedSpace() - 5 * numberOfPhotos < 0) {
+            currentMemorycard.setCurrentUsedSpace(0);
+        } else {
+            currentMemorycard.setCurrentUsedSpace(
+                    currentMemorycard.getCurrentUsedSpace() - 5 * numberOfPhotos);
+        }
     }
 }
