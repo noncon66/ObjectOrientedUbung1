@@ -1,7 +1,5 @@
 package com.Klaus.Camera;
 
-import java.sql.SQLOutput;
-
 public class Camera_Main {
     public static void main(String[] args) {
 
@@ -21,10 +19,11 @@ public class Camera_Main {
         System.out.println(mySandisk.toString());
         System.out.println(mySonySD.toString());
 
+        //add lens
+        myNikon.setCurrentLens(myTamron);
 
-
-
+        //all Memorycard
+        myNikon.setCurrentMemorycard(mySandisk);
 
     }
-
 }
