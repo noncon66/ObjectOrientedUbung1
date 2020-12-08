@@ -7,10 +7,10 @@ public class Staff {
     public Staff(String name, Department currentDepartment) {
         this.name = name;
         this.currentDepartment = currentDepartment;
+        this.addToDepartment(currentDepartment);
     }
 
     public void addToDepartment(Department department){
-        currentDepartment = department;
         department.addStuff(this);
     }
 
