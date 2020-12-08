@@ -32,7 +32,7 @@ public class Department {
 
     public void addStuff(Staff staff) {
         this.staff.add(staff);
-        staff.addToDepartment(this);
+        //staff.addToDepartment(this);
     }
 
     public void removeStaff(Staff staff){
