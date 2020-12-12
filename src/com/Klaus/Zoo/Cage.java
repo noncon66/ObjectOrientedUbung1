@@ -5,27 +5,40 @@ import java.util.Vector;
 public class Cage {
     private String name;
     private Vector<Animal> animalsInCage;
-    private Zoo isInZoo;
 
-    public Cage(String name, Zoo isInZoo) {
+    public Cage(String name) {
         this.name = name;
         this.animalsInCage = new Vector<>();
-        this.isInZoo = isInZoo;
+    }
+
+    public Cage(String name, Zoo zoo) {
+        this.name = name;
+        this.animalsInCage = new Vector<>();
+        zoo.addCage(this);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addAnimal(Animal newAnimal){
         animalsInCage.add(newAnimal);
-        newAnimal.addToCage(this);
     }
 
-    public void addZoo(Zoo zoo){
-        isInZoo = zoo;
+    public void addToZoo(Zoo zoo){
         zoo.addCage(this);
-
-
     }
 
-    public void printStructure(){
+
+    public void printStructure(String prefix){
+        System.out.println(this.name);
+        System.out.print(prefix + "Tiere: ");
+        for (int i = 0; i < animalsInCage.size(); i++) {
+            animalsInCage.get(i).printStructure();
+            if (i != animalsInCage.size()-1) {
+                System.out.print(", ");
+            }
+        }
 
     }
 
