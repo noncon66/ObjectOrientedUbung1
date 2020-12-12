@@ -5,11 +5,44 @@ import java.util.Vector;
 public class Zoo {
     private String name;
     private Vector<Cage> cagesInZoo;
+    private Vector<Food> foods;
+    private Vector<Zookeeper> zookeepers;
+
 
     public Zoo(String name) {
         this.name = name;
-        this.cagesInZoo = new Vector<>();
+        cagesInZoo = new Vector<>();
+        foods = new Vector<>();
     }
+
+    public Cage searchAndCreateCage(String name){
+        for (int i = 0; i < cagesInZoo.size(); i++) {
+            if (cagesInZoo.get(i).getName().equals(name)){
+                return cagesInZoo.get(i);
+            }
+        }
+        Cage c = new Cage(name);
+        cagesInZoo.add(c);
+        return c;
+    }
+
+    public Food searchAndCreateFood(String name){
+        for (var food :foods) {
+            if(food.getName().equals(name)){
+                return food;
+            }
+        }
+        Food f = new Food(name, "tbd");
+        foods.add(f);
+        return f;
+    }
+
+    public Food searchAndCreateFood(String name, String unit) {
+        Food f = searchAndCreateFood(name);
+        f.setUnit(unit);
+        return f;
+    }
+
 
     public void addCage(Cage cage){
         cagesInZoo.add(cage);
@@ -25,6 +58,10 @@ public class Zoo {
         }
     }
 
+
+    public Animal createAnimal(String cagename, String animalname, String species, String favoriteFood, int foodDemand) {
+    return new Animal(this, cagename, animalname, species, favoriteFood, foodDemand);
+    }
 
 
 }

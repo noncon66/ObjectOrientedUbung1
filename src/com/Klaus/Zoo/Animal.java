@@ -17,6 +17,21 @@ public class Animal {
         cage.addAnimal(this);
     }
 
+    public Animal (Zoo zoo, String cagename, String animalname, String species, String favoriteFood, int foodDemand){
+        this.name = animalname;
+        this.species = species;
+        this.foodDemand = foodDemand;
+        this.favoriteFood = zoo.searchAndCreateFood(favoriteFood);
+        zoo.searchAndCreateCage(cagename).addAnimal(this);
+        //dailyFoodDemand vom Food erhöhen
+        this.favoriteFood.addToDailyFoodDemand(foodDemand);
+
+
+    }
+
+
+
+
     public void setFoodDemand(int foodDemand) {
         this.foodDemand = foodDemand;
     }
