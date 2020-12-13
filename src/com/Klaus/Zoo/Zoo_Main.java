@@ -23,8 +23,9 @@ public class Zoo_Main {
         rapperswil.searchAndCreateFood("Mäuse", "Stk");
         rapperswil.searchAndCreateFood("Eier", "Stk");
 
-        //Zookeeper johann = new Zookeeper("Johann", lionFemale1);
-        //johann.addCage("");
+        rapperswil.searchAndCreateZookeeper("Johann", lionFemale1, new String[]{"Raubkatzen", "Affenhaus"});
+        rapperswil.searchAndCreateZookeeper("Johanna", gecko1, new String[]{"Reptilienhaus"});
+
 
 
 

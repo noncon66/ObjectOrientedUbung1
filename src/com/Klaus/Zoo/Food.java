@@ -10,7 +10,7 @@ public class Food {
         this.unit = unit;
     }
 
-    public void addToDailyFoodDemand(int demand){
+    public void addToDailyFoodDemand(int demand) {
         dailyFoodDemand += demand;
     }
 
@@ -22,6 +22,7 @@ public class Food {
         this.unit = unit;
     }
 
-
-
+    public Object getUnit() {
+        return unit;
+    }
 }

@@ -32,12 +32,9 @@ public class Cage {
 
     public void printStructure(String prefix){
         System.out.println(this.name);
-        System.out.print(prefix + "Tiere: ");
+        System.out.println(prefix + "Tiere: ");
         for (int i = 0; i < animalsInCage.size(); i++) {
-            animalsInCage.get(i).printStructure();
-            if (i != animalsInCage.size()-1) {
-                System.out.print(", ");
-            }
+            animalsInCage.get(i).printStructure(prefix);
         }
 
     }

@@ -7,10 +7,10 @@ public class Zookeeper {
     private Animal favoriteAnimal;
     private Vector<Cage> myCages;
 
-    public Zookeeper(String name, Animal favoriteAnimal) {
+    public Zookeeper(String name, Animal favoriteAnimal, Vector<Cage> myCages) {
         this.name = name;
         this.favoriteAnimal = favoriteAnimal;
-        myCages = new Vector<>();
+        this.myCages = myCages;
     }
 
     public void addCage(Cage cage) {
@@ -20,6 +20,12 @@ public class Zookeeper {
 
     public String getName() {
         return name;
+    }
+
+    public void printStructure() {
+     //todo
+
+
     }
 }
 

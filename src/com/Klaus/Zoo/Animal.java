@@ -40,8 +40,14 @@ public class Animal {
         cage.addAnimal(this);
     }
 
-    public void printStructure(){
-        System.out.print(this.name);
+    public void printStructure(String prefix){
+        System.out.printf("%s%s (%s) braucht %d %s %s%n",
+                prefix,
+                name,
+                species,
+                foodDemand,
+                favoriteFood.getUnit(),
+                favoriteFood.getName());
     }
 
 
