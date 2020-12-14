@@ -6,17 +6,6 @@ public class Animal {
     private int foodDemand;
     private Food favoriteFood;
 
-    public Animal(String name, String species) {
-        this.name = name;
-        this.species = species;
-    }
-
-    public Animal(String name, String species, Cage cage) {
-        this.name = name;
-        this.species = species;
-        cage.addAnimal(this);
-    }
-
     public Animal (Zoo zoo, String cagename, String animalname, String species, String favoriteFood, int foodDemand){
         this.name = animalname;
         this.species = species;
@@ -27,15 +16,6 @@ public class Animal {
         this.favoriteFood.addToDailyFoodDemand(foodDemand);
 
 
-    }
-
-
-    public void setFoodDemand(int foodDemand) {
-        this.foodDemand = foodDemand;
-    }
-
-    public void addToCage(Cage cage){
-        cage.addAnimal(this);
     }
 
     public void printStructure(String prefix){
@@ -49,4 +29,10 @@ public class Animal {
     }
 
     public String getName() { return name; }
+
+    public int getFoodDemand() { return foodDemand; }
+
+    public String getFavoriteFoodName() {
+        return favoriteFood.getName();
+    }
 }
