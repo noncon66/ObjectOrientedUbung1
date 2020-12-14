@@ -13,7 +13,6 @@ public class Zookeeper {
         this.myCages = myCages;
     }
 
-
     public String getName() {
         return name;
     }
@@ -26,10 +25,15 @@ public class Zookeeper {
                 myCages) {
             System.out.println(prefix + "  " + cage.getName());
         }
-
-
-
     }
+
+    public void feedAnimals(){
+        for (var cage : myCages) {
+            cage.getDemands();
+        }
+    }
+
+
 }
 
 
