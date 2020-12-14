@@ -13,17 +13,20 @@ public class Zookeeper {
         this.myCages = myCages;
     }
 
-    public void addCage(Cage cage) {
-        myCages.add(cage);
-    }
-
 
     public String getName() {
         return name;
     }
 
-    public void printStructure() {
-     //todo
+    public void printStructure(String prefix) {
+        System.out.println(prefix + this.name);
+        System.out.println(prefix + "Lieblingstier: " + favoriteAnimal.getName());
+        System.out.println(prefix + "Gehege: ");
+        for (var cage :
+                myCages) {
+            System.out.println(prefix + "  " + cage.getName());
+        }
+
 
 
     }

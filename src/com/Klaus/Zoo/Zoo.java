@@ -1,7 +1,5 @@
 package com.Klaus.Zoo;
 
-import com.sun.source.util.JavacTask;
-
 import java.util.Vector;
 
 public class Zoo {
@@ -49,21 +47,6 @@ public class Zoo {
     }
 
 
-    public void addCage(Cage cage) {
-        cagesInZoo.add(cage);
-    }
-
-    public void printStructure(String prefix) {
-        System.out.println("Zoo: " + this.name);
-
-        for (int i = 0; i < cagesInZoo.size(); i++) {
-            System.out.print(prefix + "Gehege: ");
-            cagesInZoo.get(i).printStructure("  " + prefix);
-            System.out.println();
-        }
-    }
-
-
     public Animal createAnimal(String cagename, String animalname, String species, String favoriteFood, int foodDemand) {
         return new Animal(this, cagename, animalname, species, favoriteFood, foodDemand);
     }
@@ -87,6 +70,46 @@ public class Zoo {
         var zookeeper = new Zookeeper(name, favoriteAnimal, myCages);
         zookeepers.add(zookeeper);
         return zookeeper;
+
+    }
+
+
+    public Veterinary searchAndCreateVeterinary(String name) {
+        for (var vet :
+                veterinaries) {
+            if (vet.getName().equals(name)) {
+                return vet;
+            }
+        }
+
+        var vet = new Veterinary(name);
+        veterinaries.add(vet);
+        return vet;
+    }
+
+
+
+    public void addCage(Cage cage) {
+        cagesInZoo.add(cage);
+    }
+
+    public void printStructure(String prefix) {
+        System.out.println("Zoo: " + this.name);
+        for (int i = 0; i < cagesInZoo.size(); i++) {
+            System.out.print(prefix + "Gehege: ");
+            cagesInZoo.get(i).printStructure("  " + prefix);
+        }
+
+        for (var keeper : zookeepers) {
+            System.out.println(prefix + "Pfleger: ");
+            keeper.printStructure("  " + prefix);
+        }
+
+        for (var vet : veterinaries) {
+            System.out.println(prefix + "Tierärzte: ");
+            vet.printStructure("  " + prefix);
+
+        }
 
     }
 

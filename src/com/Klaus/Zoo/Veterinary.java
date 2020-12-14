@@ -11,7 +11,7 @@ public class Veterinary {
         return name;
     }
 
-
-
-
+    public void printStructure(String prefix){
+        System.out.println(prefix + this.name);
+    }
 }
