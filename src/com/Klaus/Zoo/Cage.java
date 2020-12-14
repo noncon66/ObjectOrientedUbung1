@@ -5,16 +5,12 @@ import java.util.Vector;
 public class Cage {
     private String name;
     private Vector<Animal> animalsInCage;
+    private Demand[] cageDemand;
 
     public Cage(String name) {
         this.name = name;
         this.animalsInCage = new Vector<>();
-    }
-
-    public Cage(String name, Zoo zoo) {
-        this.name = name;
-        this.animalsInCage = new Vector<>();
-        zoo.addCage(this);
+        this.cageDemand = new Demand[animalsInCage.size()];
     }
 
     public String getName() {
@@ -25,11 +21,6 @@ public class Cage {
         animalsInCage.add(newAnimal);
     }
 
-    public void addToZoo(Zoo zoo){
-        zoo.addCage(this);
-    }
-
-
     public void printStructure(String prefix){
         System.out.println(this.name);
         System.out.println(prefix + "Tiere: ");
@@ -39,5 +30,12 @@ public class Cage {
 
     }
 
-
+    public Demand[] getDemands() {
+        for (int i = 0; i < cageDemand.length; i++) {
+            cageDemand[i] = new Demand(
+            animalsInCage.get(i).getFavoriteFoodName(),
+            animalsInCage.get(i).getFoodDemand());
+        }
+        return cageDemand;
+    }
 }
