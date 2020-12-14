@@ -30,8 +30,6 @@ public class Animal {
     }
 
 
-
-
     public void setFoodDemand(int foodDemand) {
         this.foodDemand = foodDemand;
     }
@@ -50,5 +48,5 @@ public class Animal {
                 favoriteFood.getName());
     }
 
-
+    public String getName() { return name; }
 }
