@@ -26,6 +26,8 @@ public class Zoo_Main {
         rapperswil.searchAndCreateZookeeper("Johann", lionFemale1, new String[]{"Raubkatzen", "Affenhaus"});
         rapperswil.searchAndCreateZookeeper("Johanna", gecko1, new String[]{"Reptilienhaus"});
 
+        rapperswil.searchAndCreateVeterinary("Robert");
+
 
 
 
