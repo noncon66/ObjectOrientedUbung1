@@ -28,9 +28,12 @@ public class Zookeeper {
     }
 
     public void feedAnimals(){
-        for (var cage : myCages) {
-            cage.getDemands();
+var demands = new Vector<Demand>();
+        for (var cage :
+                myCages) {
+            demands.addAll(cage.getDemands());
         }
+
     }
 
 

@@ -4,6 +4,7 @@ public class Food {
     private String name;
     private String unit;
     private int dailyFoodDemand;
+    private int foodStock;
 
     public Food(String name, String unit) {
         this.name = name;
@@ -25,6 +26,10 @@ public class Food {
     public Object getUnit() {
         return unit;
     }
+
+    public int getFoodStock() { return foodStock; }
+
+    public void setFoodStock(int foodStock) { this.foodStock = foodStock;}
 
 
 }

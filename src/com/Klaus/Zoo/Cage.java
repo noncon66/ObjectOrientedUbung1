@@ -1,16 +1,17 @@
 package com.Klaus.Zoo;
 
+import java.sql.DatabaseMetaData;
 import java.util.Vector;
 
 public class Cage {
     private String name;
     private Vector<Animal> animalsInCage;
-    private Demand[] cageDemand;
+    private Vector<Demand> cageDemand;
 
     public Cage(String name) {
         this.name = name;
         this.animalsInCage = new Vector<>();
-        this.cageDemand = new Demand[animalsInCage.size()];
+        this.cageDemand = new Vector<>();
     }
 
     public String getName() {
@@ -30,12 +31,8 @@ public class Cage {
 
     }
 
-    public Demand[] getDemands() {
-        for (int i = 0; i < cageDemand.length; i++) {
-            cageDemand[i] = new Demand(
-            animalsInCage.get(i).getFavoriteFoodName(),
-            animalsInCage.get(i).getFoodDemand());
-        }
+    public Vector<Demand> getDemands() {
+
         return cageDemand;
     }
 }
