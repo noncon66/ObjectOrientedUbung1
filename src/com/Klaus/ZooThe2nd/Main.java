@@ -38,7 +38,23 @@ public class Main {
         reptiles.addAnimal(blindworm1);
         reptiles.addAnimal(gecko1);
 
+        Zookeeper johann = new Zookeeper("Johann", lionFemale1);
+        Zookeeper johanna = new Zookeeper("Jahanna", gecko1);
+
+        zoo.addZookeeper(johann);
+        zoo.addZookeeper(johanna);
+
+        johann.addCage(bigCats);
+        johann.addCage(monkeys);
+        johanna.addCage(reptiles);
+
+        Veterinarian robert = new Veterinarian("Robert");
+
+        zoo.addVet(robert);
+
         zoo.printStructure("");
+
+
 
 
 

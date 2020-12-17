@@ -12,4 +12,8 @@ public class Animal {
     public void printStructure(String prefix){
         System.out.printf("%s %s (%s)", prefix, name, species);
     }
+
+    public String getName() {
+        return name;
+    }
 }
