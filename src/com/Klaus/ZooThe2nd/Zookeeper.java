@@ -22,4 +22,19 @@ public class Zookeeper {
 
     }
 
+    public void startToWork() {
+        System.out.println(name + " beginnt zu arbeiten");
+        this.feedAndWatchCage("");
+        
+        
+    }
+    private void feedAndWatchCage(String prefix) {
+        for (Cage c :
+                myCages) {
+            c.feedAnimals("  " + prefix);
+            c.watchAnimals("  " + prefix, favoriteAnimal.getName());
+        }
+    }
+
+
 }

@@ -8,7 +8,6 @@ public class Veterinarian {
     }
 
     public void printStructure(String prefix){
-        System.out.printf(prefix + name);
-
+        System.out.println(prefix + name);
     }
 }

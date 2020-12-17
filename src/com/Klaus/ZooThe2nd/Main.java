@@ -54,12 +54,12 @@ public class Main {
 
         zoo.printStructure("");
 
+        //Simulation
+        for (int i = 0; i < 30; i++) {
 
-
-
-
-
-
+            System.out.println("\nTAG " + (i + 1) + ":");
+            zoo.startWorkday();
+        }
 
 
     }

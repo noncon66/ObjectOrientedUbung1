@@ -28,6 +28,13 @@ public class Zoo2 {
         vet = v;
     }
 
+    public void startWorkday(){
+        for (Zookeeper z :
+                zookeepers) {
+            z.startToWork();
+        }
+    }
+
 
     public void printStructure(String prefix){
         System.out.println("Zoo: " + name);
@@ -43,9 +50,6 @@ public class Zoo2 {
 
         System.out.println("Tierarzt: ");
         vet.printStructure("  " + prefix);
-
-
-
 
     }
 }
