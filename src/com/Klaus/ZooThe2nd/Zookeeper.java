@@ -24,15 +24,15 @@ public class Zookeeper {
 
     public void startToWork() {
         System.out.println(name + " beginnt zu arbeiten");
-        this.feedAndWatchCage("");
+        this.feedAndWatchCages("");
         
         
     }
-    private void feedAndWatchCage(String prefix) {
-        for (Cage c :
+    private void feedAndWatchCages(String prefix) {
+        for (Cage cage :
                 myCages) {
-            c.feedAnimals("  " + prefix);
-            c.watchAnimals("  " + prefix, favoriteAnimal.getName());
+            cage.feedAnimals("  " + prefix);
+            cage.watchAnimals("  " + prefix, favoriteAnimal.getName());
         }
     }
 

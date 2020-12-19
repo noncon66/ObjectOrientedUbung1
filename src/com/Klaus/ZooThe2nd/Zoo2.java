@@ -29,23 +29,23 @@ public class Zoo2 {
     }
 
     public void startWorkday(){
-        for (Zookeeper z :
+        for (Zookeeper zookeeper :
                 zookeepers) {
-            z.startToWork();
+            zookeeper.startToWork();
         }
     }
 
 
     public void printStructure(String prefix){
         System.out.println("Zoo: " + name);
-        for (Cage c :
+        for (Cage cage :
                 cages) {
-            c.printStructure("  " + prefix);
+            cage.printStructure("  " + prefix);
         }
         System.out.println("Pfleger: ");
-        for (Zookeeper z :
+        for (Zookeeper zookeeper :
                 zookeepers) {
-            z.printStructure("  " + prefix);
+            zookeeper.printStructure("  " + prefix);
         }
 
         System.out.println("Tierarzt: ");

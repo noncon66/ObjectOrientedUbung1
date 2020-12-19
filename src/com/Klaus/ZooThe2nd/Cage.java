@@ -19,9 +19,9 @@ public class Cage {
     public void printStructure(String prefix) {
         System.out.println(prefix + "Gehege: " + name);
         System.out.println("  " + prefix + "Tiere:");
-        for (Animal a :
+        for (Animal animal :
                 animals) {
-            a.printStructure("  " + "  " + prefix);
+            animal.printStructure("  " + "  " + prefix);
             System.out.println();
         }
     }
