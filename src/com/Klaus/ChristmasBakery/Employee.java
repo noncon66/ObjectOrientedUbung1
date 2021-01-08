@@ -7,15 +7,10 @@ public class Employee {
     private String favouriteCookie;
     private Vector<Cookie> cookies;
 
-    public Employee(String name) {
-        this.name = name;
-        this.favouriteCookie = "tbd";
-        cookies = new Vector<>();
-    }
-
     public Employee(String name, String favouriteCookie, String[] cookiesList) {
         this.name = name;
         this.favouriteCookie = favouriteCookie;
+        cookies = new Vector<>();
         for (var cookie :
                 cookiesList) {
             addCookie(cookie);
