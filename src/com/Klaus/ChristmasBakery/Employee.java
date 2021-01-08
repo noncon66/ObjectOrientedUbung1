@@ -1,4 +1,33 @@
 package com.Klaus.ChristmasBakery;
 
+import java.util.Vector;
+
 public class Employee {
+    private String name;
+    private String favouriteCookie;
+    private Vector<Cookie> cookies;
+
+    public Employee(String name) {
+        this.name = name;
+        this.favouriteCookie = "tbd";
+        cookies = new Vector<>();
+    }
+
+    public Employee(String name, String favouriteCookie, String[] cookiesList) {
+        this.name = name;
+        this.favouriteCookie = favouriteCookie;
+        for (var cookie :
+                cookiesList) {
+            addCookie(cookie);
+        }
+    }
+
+
+    public void addCookie(String cookieName){
+        cookies.add(new Cookie(cookieName));
+    }
+
+    public String getName() {
+        return name;
+    }
 }
