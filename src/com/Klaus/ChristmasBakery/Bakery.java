@@ -38,7 +38,7 @@ public class Bakery {
         return e;
     }
 
-    public Customer registerCustomer(String name, String address){
+    public Customer registerCustomer(String name, String address) {
         for (var customer :
                 customers) {
             if (customer.getName().equals(name)) {
@@ -51,16 +51,48 @@ public class Bakery {
     }
 
 
+    public Order customerOrder(String customerName, String orderItemsString) {
 
-    public Cookie searchAndCreateCookie(String name){
+        Vector<OrderItem> orderItems = new Vector<>();
+
+        String[] items = orderItemsString.split(",");
+        for (var item :
+                items) {
+            String[] itemSplit = item.split(":");
+
+            String cookieName = itemSplit[0];
+            int amount = Integer.parseInt(itemSplit[1]);
+
+            Cookie cookieToAdd = new Cookie(cookieName);
+
+            orderItems.add(new OrderItem(cookieToAdd, amount));
+        }
+
+        Order newOrder = new Order(findCustomer(customerName), orderItems);
+        orders.add(newOrder);
+        return newOrder;
+    }
+
+
+    public Cookie searchAndCreateCookie(String name) {
         for (var cookie :
                 cookies) {
-            if(cookie.getName().equals(name)){
+            if (cookie.getName().equals(name)) {
                 return cookie;
             }
         }
         Cookie c = new Cookie(name);
         cookies.add(c);
         return c;
+    }
+
+    public Customer findCustomer(String name) {
+        for (var customer :
+                customers) {
+            if (customer.getName().equals(name)) {
+                return customer;
+            }
+        }
+        return null; //Throw error if not found?
     }
 }
