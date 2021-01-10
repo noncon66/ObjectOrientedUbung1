@@ -19,7 +19,7 @@ public class Bakery {
         orders = new Vector<>();
     }
 
-    public Employee employ(String name, String favouriteCookie, String[] cookies) {
+    public Employee employ(String name, String favouriteCookie, String[] cookies, int productionCapacityTotal) {
         for (var employee : employees) {
             if (employee.getName().equals(name)) {
                 return employee;
@@ -33,7 +33,7 @@ public class Bakery {
                 cookies) {
             searchAndCreateCookie(cookie);
         }
-        Employee e = new Employee(name, favouriteCookie, cookies);
+        Employee e = new Employee(name, favouriteCookie, cookies, productionCapacityTotal);
         employees.add(e);
         return e;
     }
