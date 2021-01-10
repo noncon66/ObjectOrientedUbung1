@@ -11,6 +11,8 @@ public class Main {
         bakery.registerCustomer("Simone", "Landstraße 3");
         bakery.registerCustomer("Daniela", "Stadtweg 12");
 
+        bakery.customerOrder("Simone", "Vanillekipferl:2,Rumkugeln:10");
+
 
 
     }
