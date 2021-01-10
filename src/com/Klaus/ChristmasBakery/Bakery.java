@@ -73,6 +73,18 @@ public class Bakery {
         return newOrder;
     }
 
+    /*
+    public void produceOrderItems(){
+        for (var order :
+                orders) {
+        }
+
+
+
+    }
+
+     */
+
 
     public Cookie searchAndCreateCookie(String name) {
         for (var cookie :
