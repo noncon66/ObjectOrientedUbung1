@@ -10,4 +10,8 @@ public class Order {
         this.customer = customer;
         OrderItems = orderItems;
     }
+
+    public Vector<OrderItem> getOrderItems() {
+        return OrderItems;
+    }
 }

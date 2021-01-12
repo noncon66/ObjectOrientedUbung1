@@ -8,4 +8,12 @@ public class OrderItem {
         this.cookie = cookie;
         this.amount = amount;
     }
+
+    public Cookie getCookie() {
+        return cookie;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
 }
