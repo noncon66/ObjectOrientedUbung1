@@ -14,6 +14,11 @@ public class Main {
         bakery.customerOrder("Simone", "Vanillekipferl:2,Rumkugeln:10,Kokosbusserl:4,Nussecken:3");
         bakery.customerOrder("Daniela", "Florentiner:5,Rumkugeln:6,Spritzgebäck:7,Aniskekse:4");
 
+        for (var order :
+                bakery.getOrders()) {
+            bakery.produceOrder(order);
+        }
+
 
 
     }
