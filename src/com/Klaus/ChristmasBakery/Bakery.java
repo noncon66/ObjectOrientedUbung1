@@ -26,14 +26,14 @@ public class Bakery {
             }
         }
         //add favourite cookie of new employee to cookies list
-        searchAndCreateCookie(favouriteCookie);
+        Cookie fc = searchAndCreateCookie(favouriteCookie);
 
         //add cookie of new employee to cookies list
         for (var cookie :
                 cookies) {
             searchAndCreateCookie(cookie);
         }
-        Employee e = new Employee(name, favouriteCookie, cookies, productionCapacityTotal);
+        Employee e = new Employee(name, fc, cookies, productionCapacityTotal);
         employees.add(e);
         return e;
     }
@@ -63,7 +63,7 @@ public class Bakery {
             String cookieName = itemSplit[0];
             int amount = Integer.parseInt(itemSplit[1]);
 
-            Cookie cookieToAdd = new Cookie(cookieName);
+            Cookie cookieToAdd = searchAndCreateCookie(cookieName);
 
             orderItems.add(new OrderItem(cookieToAdd, amount));
         }
@@ -73,17 +73,32 @@ public class Bakery {
         return newOrder;
     }
 
-    /*
-    public void produceOrderItems(){
-        for (var order :
-                orders) {
+
+    public void produceOrder (Order orderToProduce){
+        for (var orderItem:
+             orderToProduce.getOrderItems()) {
+
+            for (var employee:  employees
+                 ) {
+                //Employee with favorite cookie and capacity
+                if (employee.getFavouriteCookie().equals(orderItem.getCookie()) &&
+                        employee.getProductionCapacityLeft()>= orderItem.getAmount()) {
+                    employee.produce(orderItem.getAmount());
+                    System.out.println(employee.getName()+" produces " + orderItem.getCookie().getName());
+                    break;
+                }
+                //Employee with cookie and capacity
+                else if (employee.getCookies().contains(orderItem.getCookie())&&
+                        employee.getProductionCapacityLeft()>= orderItem.getAmount()){
+                    employee.produce(orderItem.getAmount());
+                    System.out.println(employee.getName()+" produces " + orderItem.getCookie().getName());
+                    break;
+                }
+            }
         }
-
-
-
     }
 
-     */
+
 
 
     public Cookie searchAndCreateCookie(String name) {
@@ -106,5 +121,9 @@ public class Bakery {
             }
         }
         return null; //Throw error if not found?
+    }
+
+    public Vector<Order> getOrders() {
+        return orders;
     }
 }
