@@ -85,14 +85,14 @@ public class Bakery {
                         employee.getProductionCapacityLeft()>= orderItem.getAmount()) {
                     employee.produce(orderItem.getAmount());
                     System.out.println(employee.getName()+" produces " + orderItem.getCookie().getName());
-                    break;
+                    //break;
                 }
                 //Employee with cookie and capacity
-                else if (employee.getCookies().contains(orderItem.getCookie())&&
-                        employee.getProductionCapacityLeft()>= orderItem.getAmount()){
+                else if (employee.getCookies().contains(orderItem.getCookie()) &&
+                        employee.getProductionCapacityLeft() > orderItem.getAmount()){
                     employee.produce(orderItem.getAmount());
                     System.out.println(employee.getName()+" produces " + orderItem.getCookie().getName());
-                    break;
+                    //break;
                 }
             }
         }
