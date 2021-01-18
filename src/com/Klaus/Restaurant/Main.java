@@ -10,15 +10,15 @@ public class Main {
         hirschen.addTable(4, 12);
 
         Menu mittagskarte = new Menu("Mittagskarte");
-        mittagskarte.addItem("Bier", MenuItemType.DRINK);
-        mittagskarte.addItem("Cola", MenuItemType.DRINK);
-        mittagskarte.addItem("Suppe", MenuItemType.STARTER);
-        mittagskarte.addItem("Salat", MenuItemType.STARTER);
-        mittagskarte.addItem("SchniPo", MenuItemType.MAIN);
-        mittagskarte.addItem("Grillteller", MenuItemType.MAIN);
-        mittagskarte.addItem("Gemüselaibchen", MenuItemType.MAIN);
-        mittagskarte.addItem("Eis", MenuItemType.DESSERT);
-        mittagskarte.addItem("Kuchen", MenuItemType.DESSERT);
+        mittagskarte.addItem("Bier", MenuItemType.DRINK, 4.2);
+        mittagskarte.addItem("Cola", MenuItemType.DRINK, 3.4);
+        mittagskarte.addItem("Suppe", MenuItemType.STARTER, 5.3);
+        mittagskarte.addItem("Salat", MenuItemType.STARTER, 4.8);
+        mittagskarte.addItem("SchniPo", MenuItemType.MAIN, 12.2);
+        mittagskarte.addItem("Grillteller", MenuItemType.MAIN, 14.5);
+        mittagskarte.addItem("Gemüselaibchen", MenuItemType.MAIN, 9.9);
+        mittagskarte.addItem("Eis", MenuItemType.DESSERT, 3.3);
+        mittagskarte.addItem("Kuchen", MenuItemType.DESSERT, 2.9);
 
         hirschen.addMenu(mittagskarte);
 
