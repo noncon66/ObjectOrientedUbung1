@@ -1,16 +1,20 @@
 package com.Klaus.Restaurant;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Vector;
 
 public class Restaurant {
     private String name;
     private Vector<Table> tables;
     private Menu menu;
+    private PriorityQueue<GuestGroup> queue;
 
     public Restaurant(String name) {
         this.name = name;
         this.tables = new Vector<>();
         this.menu = null;
+        queue = new PriorityQueue<>();
     }
 
     public void addTable(int tableNumber, int seats) {
