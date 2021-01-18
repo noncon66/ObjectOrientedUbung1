@@ -6,10 +6,10 @@ import static com.Klaus.Restaurant.MenuItemType.*;
 
 public class Menu {
     private String name;
-    private Vector<String> drinks;
-    private Vector<String> starters;
-    private Vector<String> mains;
-    private Vector<String> deserts;
+    private Vector<MenuItem> drinks;
+    private Vector<MenuItem> starters;
+    private Vector<MenuItem> mains;
+    private Vector<MenuItem> deserts;
 
     public Menu(String name) {
         this.name = name;
@@ -19,19 +19,20 @@ public class Menu {
         this.deserts = new Vector<>();
     }
 
-    public void addItem(String name, MenuItemType type) {
+    public void addItem(String name, MenuItemType type, double price) {
+        MenuItem m = new MenuItem(name, type, price);
         switch (type) {
             case DRINK:
-                drinks.add(name);
+                drinks.add(m);
                 break;
             case STARTER:
-                starters.add(name);
+                starters.add(m);
                 break;
             case MAIN:
-                mains.add(name);
+                mains.add(m);
                 break;
             case DESSERT:
-                deserts.add(name);
+                deserts.add(m);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + type);
