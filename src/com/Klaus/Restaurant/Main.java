@@ -23,6 +23,21 @@ public class Main {
         hirschen.addMenu(mittagskarte);
 
 
+        int quarterHours = 20;
+        while (quarterHours>0){
+            hirschen.addNewGroup(12);
+
+
+
+
+
+
+
+
+            quarterHours--;
+        }
+
+
 
 
 
