@@ -7,10 +7,10 @@ public class Pizza {
     private Vector<Topping> toppings;
     private double basePrice;
 
-    public Pizza(String name, double basePrice) {
+    public Pizza(String name) {
         this.name = name;
         toppings = new Vector<>();
-        this.basePrice = basePrice;
+        this.basePrice = 6;
     }
 
     public void addTopping(Topping t) {
@@ -18,13 +18,16 @@ public class Pizza {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
     public void printPizza() {
         System.out.println("Pizza: " + name);
         System.out.println("Toppings:");
-        System.out.println();
-          for(var t: toppings){
-              System.out.println(t.toString());
-          }
+        for (var t : toppings) {
+            System.out.println(t.toString());
+        }
 
 
     }
