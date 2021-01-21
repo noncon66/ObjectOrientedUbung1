@@ -9,31 +9,34 @@ public class Order {
     public Order(int id) {
         this.id = id;
         pizzas = new Vector<>();
+
     }
 
-    public void addPizza(String name) {
-        pizzas.add(new Pizza(name));
+    public void addPizza(Pizza p) {
+        pizzas.add(p);
     }
 
-    public void printOrder(Order o) {
+
+
+    public void printOrder() {
         int i = 1;
         for (var p :
                 pizzas) {
-            System.out.println("Pizza (" + i + ")");
+            System.out.println("Pizza #" + p.getId());
             p.printPizza();
             i++;
         }
+        System.out.println("TOTAL: EUR " + this.getOrderTotalPrice());
 
     }
 
-    public Pizza getPizzaFromName(String name) {
-        for (var pizza : pizzas
-        ) {
-            if (pizza.getName().equals(name)) {
-                return pizza;
-            }
+    public double getOrderTotalPrice(){
+        double totalPrice = 0;
+        for (var p :
+                pizzas) {
+            totalPrice = totalPrice + p.getPizzaPrice();
         }
-        return null;
+        return totalPrice;
     }
 
     public int getId() {

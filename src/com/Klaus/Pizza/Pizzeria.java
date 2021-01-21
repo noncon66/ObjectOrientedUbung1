@@ -4,11 +4,13 @@ import java.util.Vector;
 
 public class Pizzeria {
     private String name;
+    private Vector<Pizza> basePizzas;
     private Vector<Topping> toppingList;
-    private Vector<Order> orders;
+    public Vector<Order> orders;
 
     public Pizzeria(String name) {
         this.name = name;
+        basePizzas = new Vector<>();
         toppingList = new Vector<>();
         orders = new Vector<>();
     }
@@ -34,33 +36,52 @@ public class Pizzeria {
         return null;
     }
 
-    public Pizza getPizzaFromOrder(int orderID, String pizzaName) {
-        for (var order :
-                orders) {
-            if (order.getId() == orderID) {
-                var pizza = order.getPizzaFromName(pizzaName);
-                return pizza;
-            }
-        }
-        return null;
-    }
 
+    public void addBasePizza(Pizza p) {
+        basePizzas.add(p);
+    }
 
     public void addTopping(Topping t) {
         toppingList.add(t);
     }
 
-    public void addOrder(int id) {
-        orders.add(new Order(id));
+
+    public Pizza findBasePizza(int id) {
+        for (var p :
+                basePizzas) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+    return null;
+    }
+
+
+    public void printBasePizzas() {
+        System.out.println("Base Pizzas: ");
+        for (var p :
+                basePizzas) {
+            System.out.println(p.basePizzaToString());
+        }
     }
 
     public void printToppingList() {
-        System.out.println("Toppings:");
+        System.out.println("Mögliche Zusatztoppings:");
         for (var t :
                 toppingList) {
             System.out.println(t.toString());
 
         }
+    }
+
+    public void printBill(int orderID){
+        for (var o :
+                orders ) {
+            if (o.getId() == orderID){
+                o.printOrder();
+            }
+        }
+
     }
 
 

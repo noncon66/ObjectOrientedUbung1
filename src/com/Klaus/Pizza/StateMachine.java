@@ -1,7 +1,5 @@
 package com.Klaus.Pizza;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.Scanner;
 
 public class StateMachine {
@@ -12,17 +10,17 @@ public class StateMachine {
 
         Pizzeria napoli = new Pizzeria("Napoli");
 
-        Topping salami = new Topping(1, "Salami", 1);
-        Topping corn = new Topping(2, "Corn", 1);
-        Topping pineapple = new Topping(3, "Pineapple", 1);
-        Topping bacon = new Topping(4, "Bacon", 1);
-        Topping onions = new Topping(5, "Onion", 1);
+        napoli.addBasePizza(new Pizza(-1, "Margherita", 6));
+        napoli.addBasePizza(new Pizza(-2, "Salami", 6.5));
+        napoli.addBasePizza(new Pizza(-3, "Prosciutto", 6.5));
+        napoli.addBasePizza(new Pizza(-4, "Quattro Formaggi ", 7));
+        napoli.addBasePizza(new Pizza(-5, "Funghi", 6));
 
-        napoli.addTopping(salami);
-        napoli.addTopping(corn);
-        napoli.addTopping(pineapple);
-        napoli.addTopping(bacon);
-        napoli.addTopping(onions);
+        napoli.addTopping(new Topping(1, "Salami", 1));
+        napoli.addTopping(new Topping(2, "Corn", 1));
+        napoli.addTopping(new Topping(3, "Pineapple", 1));
+        napoli.addTopping(new Topping(4, "Bacon", 1));
+        napoli.addTopping(new Topping(5, "Onion", 1));
 
         //napoli.printToppingList();
 
@@ -32,23 +30,45 @@ public class StateMachine {
             System.out.println("Starten mit 1");
             int input1 = scanner.nextInt();
             if (input1 == 1) {
-                napoli.addOrder(orderID);
-                System.out.println("Auswahl:");
-                int input2 = -1;
-                do {
-                    napoli.printToppingList();
-                    System.out.println("(0 = Abbrechen)");
-                    input2 = scanner.nextInt();
-                    if (input2 == 0) break;
-                    Topping t = napoli.findTopping(input2);
-                    napoli.getOrder(orderID).addPizza("Pizza");
-                    napoli.getPizzaFromOrder(1, "Pizza").addTopping(t);
-                    System.out.println(t.getName() + " hinzugefügt");
 
+                Order o = new Order(orderID);
+
+                //orders in Pizzeria  is public
+                napoli.orders.add(o);
+
+                int morePizzas = 1;
+                int pizzaID = 1;
+
+                while (morePizzas == 1) {
+                napoli.printBasePizzas();
+                System.out.println("Welche Base Pizza?");
+                    int bp = scanner.nextInt();
+                    Pizza p = new Pizza(napoli.findBasePizza(bp * (-1)));
+                    p.setId(pizzaID);
+
+                    System.out.println("Auswahl: Pizza " + p.getName());
+                    int input2 = -1;
+                    napoli.printToppingList();
+                    System.out.println("0 - ABBRECHEN");
+                    do {
+
+
+                        input2 = scanner.nextInt();
+                        if (input2 == 0) break;
+                        Topping t = napoli.findTopping(input2);
+                        p.addTopping(t);
+                        System.out.println(t.getName() + " hinzugefügt");
+
+                    }
+                    while (input2 != 0);
+                    napoli.getOrder(orderID).addPizza(p);
+                    System.out.println("Weitere Pizza? 0=nein / 1=ja");
+                    morePizzas = scanner.nextInt();
+                    pizzaID++;
                 }
-                while (input2 != 0);
-                System.out.println("Ihre Pizza:");
-                napoli.getPizzaFromOrder(orderID, "Pizza").printPizza();
+
+                System.out.println("Ihre Pizzas:");
+                napoli.printBill(orderID);
                 orderID++;
             }
 

@@ -1,6 +1,5 @@
 package com.Klaus.Pizza;
 
-import java.util.Vector;
 
 public class Topping {
     private int id;
@@ -21,8 +20,12 @@ public class Topping {
         return name;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
-        return id + " = " + name;
+        return id + " - " + name + " EUR " + price;
     }
 }
