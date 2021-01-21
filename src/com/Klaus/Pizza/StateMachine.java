@@ -28,8 +28,8 @@ public class StateMachine {
             int orderID = 1;
 
             System.out.println("Starten mit 1");
-            int input1 = scanner.nextInt();
-            if (input1 == 1) {
+            int newOrder = scanner.nextInt();
+            if (newOrder == 1) {
 
                 Order o = new Order(orderID);
 
@@ -47,20 +47,20 @@ public class StateMachine {
                     p.setId(pizzaID);
 
                     System.out.println("Auswahl: Pizza " + p.getName());
-                    int input2 = -1;
+                    int topping = -1;
                     napoli.printToppingList();
                     System.out.println("0 - ABBRECHEN");
                     do {
 
 
-                        input2 = scanner.nextInt();
-                        if (input2 == 0) break;
-                        Topping t = napoli.findTopping(input2);
+                        topping = scanner.nextInt();
+                        if (topping == 0) break;
+                        Topping t = napoli.findTopping(topping);
                         p.addTopping(t);
                         System.out.println(t.getName() + " hinzugefügt");
 
                     }
-                    while (input2 != 0);
+                    while (topping != 0);
                     napoli.getOrder(orderID).addPizza(p);
                     System.out.println("Weitere Pizza? 0=nein / 1=ja");
                     morePizzas = scanner.nextInt();
