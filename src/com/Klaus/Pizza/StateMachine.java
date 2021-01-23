@@ -22,7 +22,6 @@ public class StateMachine {
         napoli.addTopping(new Topping(4, "Bacon", 1));
         napoli.addTopping(new Topping(5, "Onion", 1));
 
-        //napoli.printToppingList();
 
         while (true) {
             int orderID = 1;
