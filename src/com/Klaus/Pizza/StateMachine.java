@@ -51,7 +51,6 @@ public class StateMachine {
                     System.out.println("0 - ABBRECHEN");
                     do {
 
-
                         topping = scanner.nextInt();
                         if (topping == 0) break;
                         Topping t = napoli.findTopping(topping);
