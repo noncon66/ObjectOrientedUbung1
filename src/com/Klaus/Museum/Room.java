@@ -9,11 +9,13 @@ public class Room {
     private int  roomNumber;
     private Vector<Artwork> artworks;
     private Vector<Visitor> visitors;
+    private Vector<Thief> thiefs;
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
         artworks = new Vector<>();
         visitors = new Vector<>();
+        thiefs = new Vector<>();
 
     }
 
@@ -30,25 +32,29 @@ public class Room {
         }
     }
 
+    public void removeArtwork(Artwork a){
+        artworks.remove(a);
+    }
+
     public void addVisitor(Visitor v){
         visitors.add(v);
     }
 
-    public void removeVisitor(Visitor v){
-        visitors.remove(v);
+    public void addThief(Thief t) {
+        thiefs.add(t);
     }
 
     public Artwork getRandomArtwork(){
-        Artwork randomArtwork = artworks.get(random.nextInt(artworks.size()+1));
-        return randomArtwork;
+        return artworks.get(random.nextInt(artworks.size()));
     }
-
-
 
     public int getRoomNumber() {
         return roomNumber;
     }
 
-
+    public Vector<Visitor> getVisitors() {
+        return visitors;
+    }
 
 }
+
