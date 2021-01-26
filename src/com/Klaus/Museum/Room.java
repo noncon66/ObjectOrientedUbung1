@@ -66,5 +66,9 @@ public class Room {
     public void setGuard(Guard guard) {
         this.guard = guard;
     }
+
+    public Guard getGuard() {
+        return guard;
+    }
 }
 
