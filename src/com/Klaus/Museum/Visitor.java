@@ -39,7 +39,9 @@ public class Visitor {
         currentRoom.addVisitor(this);
         currentRoom = newRoom;
         System.out.println(this.name + " geht in Raum " + currentRoom.getRoomNumber());
+        changeArtwork();
         return newRoom;
+
     }
 
     public Artwork changeArtwork() {
@@ -48,6 +50,7 @@ public class Visitor {
             newArtwork = currentRoom.getRandomArtwork();
         }
         currentArtwork = newArtwork;
+        System.out.println(this.name + " schaut jetzt \"" + currentArtwork.getTitle() + "\" an");
         return newArtwork;
     }
 
@@ -56,6 +59,7 @@ public class Visitor {
         currentRoom.removeVisitor(this);
         currentMuseum = null;
         currentRoom = null;
+        System.out.println(this.name + " verlässt das Museum");
     }
 
 
