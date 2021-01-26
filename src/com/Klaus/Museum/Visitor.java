@@ -18,26 +18,14 @@ public class Visitor {
         this.placeOfResidence = placeOfResidence;
     }
 
-    public static Visitor generateVisitor() {
-        String[] firstNames = {"Hans", "Doris", "Barbara", "Jakob", "Anna", "Klaus", "Julia", "Philipp", "Erna"};
-        String[] lastNames = {"Maier", "Moser", "Gruber", "Müller", "Wagner", "Pichler", "Steiner", "Huber"};
-        String[] places = {"Rankweil", "Dornbirn", "Lustenau", "Sibratsgfäll", "Fontanella", "Vandans", "Nenzing"};
-
-        String name = firstNames[random.nextInt(firstNames.length)] + " " +
-                lastNames[random.nextInt(lastNames.length)];
-        int age = 18 + random.nextInt(80);
-        String place = places[random.nextInt(places.length)];
-
-        return new Visitor(name, age, place);
-    }
-
     public Room changeRoom() {
-        Room newRoom = null;
-        while (newRoom.equals(currentRoom)) {
+        Room newRoom;
+        do {
             newRoom = currentMuseum.getRandomRoom();
-        }
-        currentRoom.addVisitor(this);
+        } while (newRoom.equals(currentRoom));
+
         currentRoom = newRoom;
+        currentRoom.addVisitor(this);
         System.out.println(this.name + " geht in Raum " + currentRoom.getRoomNumber());
         changeArtwork();
         return newRoom;
@@ -45,21 +33,32 @@ public class Visitor {
     }
 
     public Artwork changeArtwork() {
-        Artwork newArtwork = null;
-        while (newArtwork.equals(currentArtwork)) {
+        Artwork newArtwork;
+        do {
             newArtwork = currentRoom.getRandomArtwork();
-        }
+        } while (newArtwork.equals(currentArtwork));
+
         currentArtwork = newArtwork;
         System.out.println(this.name + " schaut jetzt \"" + currentArtwork.getTitle() + "\" an");
         return newArtwork;
     }
 
     public void leaveMuseum() {
-        currentMuseum.removeVisitor(this);
-        currentRoom.removeVisitor(this);
         currentMuseum = null;
         currentRoom = null;
         System.out.println(this.name + " verlässt das Museum");
+    }
+
+    public void doSomething() {
+        double r = random.nextDouble();
+        if (r <= 0.4) {
+            changeRoom();
+        } else if ((r > 0.4) & (r <= 0.8)) {
+            changeArtwork();
+        } else if ((r > 0.8) & (r < 1)) {
+            leaveMuseum();
+        }
+
     }
 
 
@@ -71,15 +70,27 @@ public class Visitor {
 
 //------------------ Getter + Setter --------------------
 
+
+    public Museum getCurrentMuseum() {
+        return currentMuseum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getPlaceOfResidence() {
+        return placeOfResidence;
+    }
+
     public void setCurrentMuseum(Museum currentMuseum) {
         this.currentMuseum = currentMuseum;
     }
 
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
 
-    public void setCurrentArtwork(Artwork currentArtwork) {
-        this.currentArtwork = currentArtwork;
-    }
+
 }
