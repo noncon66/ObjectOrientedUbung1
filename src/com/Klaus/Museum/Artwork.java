@@ -39,4 +39,8 @@ public class Artwork {
     public String toString() {
         return "," + title + "' (" + type +  ") by " + artist + " (" + yearOfOrigin + ") Price: EUR " + price;
     }
+
+    public String getTitle() {
+        return title;
+    }
 }
