@@ -64,7 +64,7 @@ public class Thief {
     }
 
     public void stealArtwork(){
-        if (currentRoom.getVisitors().size() == 0){
+        if (currentRoom.getVisitors().size() == 0 & currentRoom.getGuard().equals(null)){
             currentRoom.removeArtwork(currentArtwork);
             System.out.println("****** " + getName() + "stiehlt Kunstwerk "+ currentArtwork.getTitle() + " ******");
             leaveMuseum();
