@@ -71,6 +71,7 @@ public class Museum {
             clearMuseum();
 
             //move Guard
+            guard.getCurrentRoom().setGuard(null);
             guard.setCurrentRoom(getRandomRoom());
             guard.getCurrentRoom().setGuard(guard);
 
