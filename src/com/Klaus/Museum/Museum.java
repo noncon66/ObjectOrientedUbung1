@@ -4,19 +4,21 @@ import java.util.Random;
 import java.util.Vector;
 
 public class Museum {
-   public static Random random = new Random();
+    public static Random random = new Random();
 
     private String name;
     private Vector<Room> rooms;
+    private Vector<Visitor> visitors;
 
     public Museum(String name) {
         this.name = name;
         rooms = new Vector<>();
+        visitors = new Vector<>();
     }
 
-    public void generateInitialMuseum(Museum museum, int noOfRooms){
-        for (int i = 0; i < noOfRooms ; i++) {
-            rooms.add(new Room(i+1));
+    public void generateInitialMuseum(Museum museum, int noOfRooms) {
+        for (int i = 0; i < noOfRooms; i++) {
+            rooms.add(new Room(i + 1));
             //Raum mit 2 bis 6 Kunstwerken ausstatten
             int howManyArtworks = 2 + random.nextInt(5);
             for (int j = 1; j <= howManyArtworks; j++) {
@@ -25,7 +27,7 @@ public class Museum {
         }
     }
 
-    public void printMuseum(String prefix){
+    public void printMuseum(String prefix) {
         System.out.println(prefix + "Museum: " + this.getName());
         prefix = prefix + "  ";
         for (var r :
@@ -35,18 +37,18 @@ public class Museum {
     }
 
 
-    public void startDay(){
+    public void startDay() {
         int startHour = 9;
         int endHour = 17;
         int minute = 0;
 
         int hour = startHour;
-        while (hour != endHour){
+        while (hour != endHour) {
 
             //put what happens here!
 
             minute = minute + 15;
-            if (minute == 60){
+            if (minute == 60) {
                 hour++;
                 minute = 0;
             }
@@ -55,22 +57,42 @@ public class Museum {
     }
 
 
-//----------------- Helper --------------------------
+
+    //----------------- Helper --------------------------
     private void printTime(int hour, int minute) {
         if (minute == 0) {
             System.out.println("Time: " + hour + ":00");
-        }
-        else {
+        } else {
             System.out.println("Time: " + hour + ":" + minute);
         }
     }
 
+    public void removeVisitor(Visitor v) {
+        visitors.remove(v);
+    }
+
+    public Room getRandomRoom(){
+        Room randomRoom = rooms.get(random.nextInt(rooms.size()+1));
+        return randomRoom;
+    }
 
 
 
-//------------------ Getter + Setter --------------------
+    //------------------ Getter + Setter --------------------
     public String getName() {
         return name;
     }
 
+    public int getNumberOfRooms() {
+        return this.rooms.size();
+    }
+
+    public Room getRoomByNumber(int roomNumber) {
+        for (var room :
+                rooms) {
+            if (roomNumber == room.getRoomNumber())
+                return room;
+        }
+        return null;
+    }
 }
