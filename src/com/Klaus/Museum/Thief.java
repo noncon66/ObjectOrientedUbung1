@@ -53,8 +53,10 @@ public class Thief {
         double r = random.nextDouble();
         if (r <= 0.4) {
             changeRoom();
+            stealArtwork();
         } else if ((r > 0.4) & (r <= 0.8)) {
             changeArtwork();
+            stealArtwork();
         } else if ((r > 0.8) & (r < 1)) {
             leaveMuseum();
         }
@@ -65,6 +67,7 @@ public class Thief {
         if (currentRoom.getVisitors().size() == 0){
             currentRoom.removeArtwork(currentArtwork);
             System.out.println("****** " + getName() + "stiehlt Kunstwerk "+ currentArtwork.getTitle() + " ******");
+            leaveMuseum();
         }
 
 
