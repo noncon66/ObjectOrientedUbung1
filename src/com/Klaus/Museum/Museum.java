@@ -9,11 +9,13 @@ public class Museum {
     private String name;
     private Vector<Room> rooms;
     private Vector<Visitor> visitors;
+    private Vector<Thief> thiefs;
 
     public Museum(String name) {
         this.name = name;
         rooms = new Vector<>();
         visitors = new Vector<>();
+        thiefs = new Vector<>();
     }
 
     public void generateInitialMuseum(Museum museum, int noOfRooms) {
@@ -34,6 +36,7 @@ public class Museum {
                 rooms) {
             r.printRoom(prefix);
         }
+        System.out.println();
     }
 
 
@@ -43,19 +46,45 @@ public class Museum {
         int minute = 0;
 
         int hour = startHour;
-        while (hour != endHour) {
 
-            //put what happens here!
+        while (hour != endHour) {
+            System.out.println();
+            printTime(hour, minute);
+
+            //move Visitors
+            for (var visitor :
+                    visitors) {
+                visitor.doSomething();
+            }
+            clearMuseum();
+
+            //add visitor
+            if (hour < endHour - 1) {
+                Visitor newVisitor = VisitorFactory.generateVisitor();
+                newVisitor.setCurrentMuseum(this);
+                System.out.println(">> " + newVisitor.getName() + " betritt das Museum");
+                newVisitor.changeRoom();
+                visitors.add(newVisitor);
+
+            }
+
 
             minute = minute + 15;
             if (minute == 60) {
                 hour++;
                 minute = 0;
             }
-            printTime(hour, minute);
-        }
-    }
 
+        }
+        System.out.println();
+        printTime(hour, minute);
+        for (var visitor :
+                visitors) {
+            visitor.leaveMuseum();
+        }
+        clearMuseum();
+
+    }
 
 
     //----------------- Helper --------------------------
@@ -67,32 +96,59 @@ public class Museum {
         }
     }
 
-    public void removeVisitor(Visitor v) {
-        visitors.remove(v);
+
+    public Room getRandomRoom() {
+        return rooms.get(random.nextInt(rooms.size()));
     }
 
-    public Room getRandomRoom(){
-        Room randomRoom = rooms.get(random.nextInt(rooms.size()+1));
-        return randomRoom;
-    }
+    public void clearMuseum() {
+        Vector<Visitor> visitorsToRemove = new Vector<>();
+        for (var visitor :
+                visitors) {
+            if (visitor.getCurrentMuseum() == null) {
+                visitorsToRemove.add(visitor);
+            }
+        }
 
+        Vector<Thief> thiefsToRemove = new Vector<>();
+        for (var thief :
+                thiefs) {
+            if (thief.getCurrentMuseum() == null) {
+                thiefsToRemove.add(thief);
+            }
+        }
 
+        for (var v :
+                visitorsToRemove) {
+            visitors.remove(v);
+        }
 
-    //------------------ Getter + Setter --------------------
-    public String getName() {
-        return name;
-    }
+        for (var t :
+                thiefsToRemove) {
+            thiefs.remove(t);
+        }
 
-    public int getNumberOfRooms() {
-        return this.rooms.size();
-    }
-
-    public Room getRoomByNumber(int roomNumber) {
         for (var room :
                 rooms) {
-            if (roomNumber == room.getRoomNumber())
-                return room;
+            for (var v :
+                    visitorsToRemove) {
+                room.getVisitors().remove(v);
+            }
+            for (var t :
+                    thiefsToRemove) {
+                room.getThiefs().remove(t);
+
+
+            }
+
+
         }
-        return null;
     }
-}
+
+
+        //------------------ Getter + Setter --------------------
+        public String getName () {
+            return name;
+        }
+
+    }
