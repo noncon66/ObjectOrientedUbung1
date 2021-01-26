@@ -10,12 +10,15 @@ public class Museum {
     private Vector<Room> rooms;
     private Vector<Visitor> visitors;
     private Vector<Thief> thiefs;
+    private Guard guard;
+
 
     public Museum(String name) {
         this.name = name;
         rooms = new Vector<>();
         visitors = new Vector<>();
         thiefs = new Vector<>();
+
     }
 
     public void generateInitialMuseum(Museum museum, int noOfRooms) {
@@ -47,6 +50,8 @@ public class Museum {
 
         int hour = startHour;
 
+        guard = addGuard("Der Wächter");
+
         while (hour != endHour) {
             System.out.println();
             printTime(hour, minute);
@@ -58,6 +63,18 @@ public class Museum {
             }
             clearMuseum();
 
+            //move Thiefs
+            for (var thief :
+                    thiefs) {
+                thief.doSomething();
+            }
+            clearMuseum();
+
+            //move Guard
+            guard.setCurrentRoom(getRandomRoom());
+            guard.getCurrentRoom().setGuard(guard);
+
+
             //add visitor
             if (hour < endHour - 1) {
                 Visitor newVisitor = VisitorFactory.generateVisitor();
@@ -65,8 +82,9 @@ public class Museum {
                 System.out.println(">> " + newVisitor.getName() + " betritt das Museum");
                 newVisitor.changeRoom();
                 visitors.add(newVisitor);
-
             }
+
+            //add Thiefs???
 
 
             minute = minute + 15;
@@ -145,10 +163,17 @@ public class Museum {
         }
     }
 
-
-        //------------------ Getter + Setter --------------------
-        public String getName () {
-            return name;
-        }
-
+    public Guard addGuard(String name) {
+        Guard newGuard = new Guard(name);
+        newGuard.setCurrentRoom(getRandomRoom());
+        newGuard.getCurrentRoom().setGuard(newGuard);
+        return newGuard;
     }
+
+
+    //------------------ Getter + Setter --------------------
+    public String getName() {
+        return name;
+    }
+
+}
