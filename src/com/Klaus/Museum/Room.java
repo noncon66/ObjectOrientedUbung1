@@ -10,6 +10,7 @@ public class Room {
     private Vector<Artwork> artworks;
     private Vector<Visitor> visitors;
     private Vector<Thief> thiefs;
+    private Guard guard;
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
@@ -44,6 +45,8 @@ public class Room {
         thiefs.add(t);
     }
 
+
+
     public Artwork getRandomArtwork(){
         return artworks.get(random.nextInt(artworks.size()));
     }
@@ -58,6 +61,10 @@ public class Room {
 
     public Vector<Thief> getThiefs() {
         return thiefs;
+    }
+
+    public void setGuard(Guard guard) {
+        this.guard = guard;
     }
 }
 
