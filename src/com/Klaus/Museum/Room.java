@@ -56,5 +56,8 @@ public class Room {
         return visitors;
     }
 
+    public Vector<Thief> getThiefs() {
+        return thiefs;
+    }
 }
 
