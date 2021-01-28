@@ -5,12 +5,12 @@ import java.util.Random;
 public class Visitor {
     private static Random random = new Random();
 
-    private String name;
-    private int age;
-    private String placeOfResidence;
-    private Museum currentMuseum;
-    private Room currentRoom;
-    private Artwork currentArtwork;
+    protected String name;
+    protected int age;
+    protected String placeOfResidence;
+    protected Museum currentMuseum;
+    protected Room currentRoom;
+    protected Artwork currentArtwork;
 
     public Visitor(String name, int age, String placeOfResidence) {
         this.name = name;
@@ -26,7 +26,7 @@ public class Visitor {
 
         currentRoom = newRoom;
         currentRoom.addVisitor(this);
-        System.out.println(this.name + " geht in Raum " + currentRoom.getRoomNumber());
+        System.out.println(this.toStringShort() + " geht in Raum " + currentRoom.getRoomNumber());
         changeArtwork();
         return newRoom;
 
@@ -39,14 +39,14 @@ public class Visitor {
         } while (newArtwork.equals(currentArtwork));
 
         currentArtwork = newArtwork;
-        System.out.println(this.name + " schaut jetzt \"" + currentArtwork.getTitle() + "\" an");
+        System.out.println(this.toStringShort() + " schaut jetzt \"" + currentArtwork.getTitle() + "\" an");
         return newArtwork;
     }
 
     public void leaveMuseum() {
         currentMuseum = null;
         currentRoom = null;
-        System.out.println(this.name + " verlässt das Museum");
+        System.out.println(this.toStringShort() + " verlässt das Museum");
     }
 
     public void doSomething() {
@@ -64,7 +64,11 @@ public class Visitor {
 
     @Override
     public String toString() {
-        return name + " (" + age + ") from " + placeOfResidence;
+        return name + " (" + age + ") aus " + placeOfResidence;
+    }
+
+    public String toStringShort() {
+        return name ;
     }
 
 

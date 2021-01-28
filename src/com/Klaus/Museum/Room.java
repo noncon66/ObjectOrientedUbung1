@@ -9,14 +9,13 @@ public class Room {
     private int  roomNumber;
     private Vector<Artwork> artworks;
     private Vector<Visitor> visitors;
-    private Vector<Thief> thiefs;
-    private Guard guard;
+
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
         artworks = new Vector<>();
         visitors = new Vector<>();
-        thiefs = new Vector<>();
+
 
     }
 
@@ -41,9 +40,6 @@ public class Room {
         visitors.add(v);
     }
 
-    public void addThief(Thief t) {
-        thiefs.add(t);
-    }
 
 
 
@@ -59,16 +55,5 @@ public class Room {
         return visitors;
     }
 
-    public Vector<Thief> getThiefs() {
-        return thiefs;
-    }
-
-    public void setGuard(Guard guard) {
-        this.guard = guard;
-    }
-
-    public Guard getGuard() {
-        return guard;
-    }
 }
 

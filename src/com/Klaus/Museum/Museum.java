@@ -9,16 +9,11 @@ public class Museum {
     private String name;
     private Vector<Room> rooms;
     private Vector<Visitor> visitors;
-    private Vector<Thief> thiefs;
-    private Guard guard;
-
 
     public Museum(String name) {
         this.name = name;
         rooms = new Vector<>();
         visitors = new Vector<>();
-        thiefs = new Vector<>();
-
     }
 
     public void generateInitialMuseum(Museum museum, int noOfRooms) {
@@ -50,11 +45,12 @@ public class Museum {
 
         int hour = startHour;
 
-        guard = addGuard("Der Wächter");
+        addGuard();
 
         while (hour != endHour) {
             System.out.println();
             printTime(hour, minute);
+
 
             //move Visitors
             for (var visitor :
@@ -63,30 +59,15 @@ public class Museum {
             }
             clearMuseum();
 
-            //move Thiefs
-            for (var thief :
-                    thiefs) {
-                thief.doSomething();
-            }
-            clearMuseum();
-
-            //move Guard
-            guard.getCurrentRoom().setGuard(null);
-            guard.setCurrentRoom(getRandomRoom());
-            guard.getCurrentRoom().setGuard(guard);
-
-
-            //add visitor
+            //add visitor or thief
             if (hour < endHour - 1) {
                 Visitor newVisitor = VisitorFactory.generateVisitor();
                 newVisitor.setCurrentMuseum(this);
-                System.out.println(">> " + newVisitor.getName() + " betritt das Museum");
+                System.out.println(">> " + newVisitor.toString()
+                        + " betritt das Museum");
                 newVisitor.changeRoom();
                 visitors.add(newVisitor);
             }
-
-            //add Thiefs???
-
 
             minute = minute + 15;
             if (minute == 60) {
@@ -129,22 +110,9 @@ public class Museum {
             }
         }
 
-        Vector<Thief> thiefsToRemove = new Vector<>();
-        for (var thief :
-                thiefs) {
-            if (thief.getCurrentMuseum() == null) {
-                thiefsToRemove.add(thief);
-            }
-        }
-
         for (var v :
                 visitorsToRemove) {
             visitors.remove(v);
-        }
-
-        for (var t :
-                thiefsToRemove) {
-            thiefs.remove(t);
         }
 
         for (var room :
@@ -153,22 +121,18 @@ public class Museum {
                     visitorsToRemove) {
                 room.getVisitors().remove(v);
             }
-            for (var t :
-                    thiefsToRemove) {
-                room.getThiefs().remove(t);
-
-
-            }
 
 
         }
     }
 
-    public Guard addGuard(String name) {
-        Guard newGuard = new Guard(name);
-        newGuard.setCurrentRoom(getRandomRoom());
-        newGuard.getCurrentRoom().setGuard(newGuard);
-        return newGuard;
+    public void addGuard() {
+        Guard g = VisitorFactory.generateGuard();
+        g.currentMuseum = this;
+        visitors.add(g);
+        System.out.println(g.toString());
+        g.changeRoom();
+
     }
 
 

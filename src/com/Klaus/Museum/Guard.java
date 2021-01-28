@@ -1,18 +1,36 @@
 package com.Klaus.Museum;
 
-public class Guard {
-    private String name;
-    private Room currentRoom;
+public class Guard extends Visitor {
 
-    public Guard(String name) {
-        this.name = name;
+    public Guard(String name, int age, String placeOfResidence) {
+        super(name, age, placeOfResidence);
     }
 
-    public Room getCurrentRoom() {
-        return currentRoom;
+    public Room changeRoom() {
+        Room newRoom;
+        do {
+            newRoom = currentMuseum.getRandomRoom();
+        } while (newRoom.equals(currentRoom));
+
+        currentRoom = newRoom;
+        currentRoom.addVisitor(this);
+        System.out.println(this.toStringShort() + " geht in Raum " + currentRoom.getRoomNumber());
+        return newRoom;
+
     }
 
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
+
+    public void doSomething() {
+        changeRoom();
     }
+
+    @Override
+    public String toString() {
+        return name + " (WÄCHTER, " + age + ") aus " + placeOfResidence;
+    }
+
+    public String toStringShort() {
+        return name + " (WÄCHTER)";
+    }
+
 }

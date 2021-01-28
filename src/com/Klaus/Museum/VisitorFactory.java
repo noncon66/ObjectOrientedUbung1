@@ -14,12 +14,23 @@ public class VisitorFactory {
                 lastNames[random.nextInt(lastNames.length)];
         int age = 18 + random.nextInt(80);
         String place = places[random.nextInt(places.length)];
-        return new Visitor(name, age, place);
+
+        double probability = random.nextDouble();
+
+        if (probability<0.8) {
+            return new Visitor(name, age, place);
+        } else {
+            Visitor newVisitor = generateVisitor();
+            return new Thief(newVisitor.getName(), newVisitor.getAge(), newVisitor.getPlaceOfResidence());
+        }
     }
 
-    public static Thief generateThief() {
+    public static Guard generateGuard(){
         Visitor newVisitor = generateVisitor();
-        return new Thief(newVisitor.getName(), newVisitor.getAge(), newVisitor.getPlaceOfResidence());
+        return new Guard(newVisitor.getName(), newVisitor.getAge(), newVisitor.getPlaceOfResidence());
+
     }
+
+
 
 }
