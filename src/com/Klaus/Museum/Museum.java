@@ -9,6 +9,7 @@ public class Museum {
     private String name;
     private Vector<Room> rooms;
     private Vector<Visitor> visitors;
+    private Curator curator;
 
     public Museum(String name) {
         this.name = name;
@@ -45,12 +46,14 @@ public class Museum {
 
         int hour = startHour;
 
+        addCurator();
         addGuard();
 
         while (hour != endHour) {
             System.out.println();
             printTime(hour, minute);
 
+            curator.doYourJob();
 
             //move Visitors
             for (var visitor :
@@ -132,6 +135,19 @@ public class Museum {
         visitors.add(g);
         System.out.println(g.toString());
         g.changeRoom();
+    }
+
+    public void addCurator() {
+        Curator c = new Curator();
+        c.setCurrentMuseum(this);
+        curator = c;
+        System.out.println("Dürfen wir vorstellen: " + curator.toString());
+        System.out.println();
+    }
+
+
+    public void addNewArtwork(Artwork boughtArtwork) {
+       // TODO: 28.01.2021  hier weitermachen
 
     }
 
@@ -140,5 +156,6 @@ public class Museum {
     public String getName() {
         return name;
     }
+
 
 }

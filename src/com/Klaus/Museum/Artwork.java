@@ -43,4 +43,8 @@ public class Artwork {
     public String getTitle() {
         return title;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }
