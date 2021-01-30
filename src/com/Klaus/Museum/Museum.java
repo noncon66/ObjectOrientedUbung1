@@ -147,8 +147,7 @@ public class Museum {
 
 
     public void addNewArtwork(Artwork boughtArtwork) {
-       // TODO: 28.01.2021  hier weitermachen
-
+               getRandomRoom().addArtwork(boughtArtwork);
     }
 
 

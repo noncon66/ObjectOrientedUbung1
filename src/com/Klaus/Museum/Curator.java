@@ -45,9 +45,4 @@ public class Curator {
     public void setCurrentMuseum(Museum currentMuseum) {
         this.currentMuseum = currentMuseum;
     }
-
-    @Override
-    public String toString() {
-        return name + " (Kurator)";
-    }
 }

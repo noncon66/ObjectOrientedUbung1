@@ -16,7 +16,6 @@ public class Room {
         artworks = new Vector<>();
         visitors = new Vector<>();
 
-
     }
 
     public void addRandomArtwork(){
@@ -38,6 +37,11 @@ public class Room {
 
     public void addVisitor(Visitor v){
         visitors.add(v);
+    }
+
+    public void addArtwork(Artwork artwork){
+        this.artworks.add(artwork);
+        System.out.println("Kunstwerk im Raum " + getRoomNumber() + " ausgestellt!");
     }
 
 

@@ -16,6 +16,7 @@ public class Visitor {
         this.name = name;
         this.age = age;
         this.placeOfResidence = placeOfResidence;
+
     }
 
     public Room changeRoom() {
