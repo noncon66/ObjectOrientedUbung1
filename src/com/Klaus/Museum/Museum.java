@@ -3,7 +3,7 @@ package com.Klaus.Museum;
 import java.util.Random;
 import java.util.Vector;
 
-public class Museum {
+public class Museum implements IPrintStructure{
     public static Random random = new Random();
 
     private String name;
@@ -28,12 +28,12 @@ public class Museum {
         }
     }
 
-    public void printMuseum(String prefix) {
+    public void printStructure(String prefix) {
         System.out.println(prefix + "Museum: " + this.getName());
         prefix = prefix + "  ";
         for (var r :
                 rooms) {
-            r.printRoom(prefix);
+            r.printStructure(prefix);
         }
         System.out.println();
     }

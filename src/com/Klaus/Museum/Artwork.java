@@ -2,7 +2,7 @@ package com.Klaus.Museum;
 
 import java.util.Random;
 
-public class Artwork {
+public class Artwork implements IPrintStructure{
     private static Random random = new Random();
 
     private String type;
@@ -46,5 +46,10 @@ public class Artwork {
 
     public int getPrice() {
         return price;
+    }
+
+    @Override
+    public void printStructure(String prefix) {
+        System.out.println(prefix + "," + title + "' (" + type +  ") by " + artist + " (" + yearOfOrigin + ") Price: EUR " + price);
     }
 }
