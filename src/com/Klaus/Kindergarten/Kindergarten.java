@@ -1,6 +1,5 @@
 package com.Klaus.Kindergarten;
 
-import java.util.PriorityQueue;
 import java.util.Vector;
 
 public class Kindergarten {
@@ -20,8 +19,46 @@ public class Kindergarten {
         fish = null;
     }
 
+    public Child addChild (String name){
+        Child c = new Child(name);
+        children.add(c);
+        return c;
+    }
+
+    public Teacher addTeacher (String name, int mood){
+        Teacher t = new Teacher(name, mood);
+        teachers.add(t);
+        return t;
+    }
+
+    public Cat addCat (String name){
+        cat = new Cat(name);
+        return cat;
+    }
+
+    public Dog addDog (String name){
+        dog = new Dog(name);
+        return dog;
+    }
+
+    public Fish addFish (String name){
+        fish = new Fish(name);
+        return fish;
+    }
 
     public Vector<Child> getChildren() {
         return children;
     }
+
+    public void printChildren(){
+        for (var c :
+                children) {
+            System.out.println(c.getName() + " (" + c.getMood()+ ")");
+        }
+
+
+    }
+
+
+
 }

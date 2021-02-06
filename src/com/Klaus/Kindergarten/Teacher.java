@@ -12,26 +12,21 @@ public class Teacher extends Person implements ISimulation {
     }
 
     @Override
-    public void doSimulation() {
-        this.careForUnluckyChild();
-
-    }
-
-    public void careForUnluckyChild() {
-        Vector<Child> children = myKindi.getChildren();
+    public void doSimulation(Vector<Child> children) {
         Child unluckiestChild = null;
         int unluckiestChildLevel = Integer.MAX_VALUE;
         for (Child c :
                 children) {
-            if (c.getLuckinessLevel() < unluckiestChildLevel) {
+            if (c.getMood() < unluckiestChildLevel) {
                 unluckiestChild = c;
-                unluckiestChildLevel = c.getLuckinessLevel();
+                unluckiestChildLevel = c.getMood();
             }
         }
 
-        unluckiestChild.setLuckinessLevel(unluckiestChildLevel + addsLuckinessLevel);
+        unluckiestChild.setMood(unluckiestChildLevel + addsLuckinessLevel);
 
-        System.out.println(this.name + "has rised the LuckinessLevel of " + unluckiestChild.getName() +
-                " by " + addsLuckinessLevel + " to " + unluckiestChild.getLuckinessLevel());
+        System.out.println(this.name + " comforts " + unluckiestChild.getName() +
+                " (+" + addsLuckinessLevel + ")");
+
     }
 }
