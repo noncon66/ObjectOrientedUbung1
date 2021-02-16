@@ -1,5 +1,7 @@
 package com.Klaus.SkiRental;
 
+import java.util.Vector;
+
 public class Customer {
     private String name;
     private Reservation reservation;
@@ -8,7 +10,7 @@ public class Customer {
         this.name = name;
     }
 
-    public void tryToRent(Category[] categories, Shop shop){
+    public void tryToRent(Vector<Category> categories, Shop shop){
 
 
 

@@ -13,4 +13,20 @@ public class Item {
         this.isRent = false;
         this.isReserved = false;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public String getInventoryId() {
+        return inventoryId;
+    }
+
+    public boolean isRent() {
+        return isRent;
+    }
+
+    public boolean isReserved() {
+        return isReserved;
+    }
 }

@@ -7,7 +7,6 @@ public class SimulationFactory {
 
     private static Random random = new Random();
 
-
     public static Customer createCustomer() {
         String[] firstNames = {"Hans", "Doris", "Barbara", "Jakob", "Anna", "Klaus", "Julia", "Philipp", "Erna"};
         String[] lastNames = {"Maier", "Moser", "Gruber", "Müller", "Wagner", "Pichler", "Steiner", "Huber"};
@@ -15,7 +14,6 @@ public class SimulationFactory {
                 lastNames[random.nextInt(lastNames.length)];
 
         return new Customer(name);
-
     }
 
     public static Vector<Item> createItems(int count) {
@@ -31,12 +29,11 @@ public class SimulationFactory {
     }
 
     private static Item createItem(Category category, int seq) {
-
         return new Item(category, category.toString().toLowerCase() + seq);
     }
 
 
-    private static Vector<Category> createCategoriesToRent() {
+    public static Vector<Category> createCategoriesToRent() {
         var categoriesToRent = new Vector<Category>();
 
         while (categoriesToRent.size() == 0) {

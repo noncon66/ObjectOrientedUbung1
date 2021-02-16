@@ -19,5 +19,29 @@ public class Shop {
     private WebShop webshop;
     private Vector<Item> items;
 
+    public boolean checkAvailability(Vector<Category> wishList) {
+        category: for (var w :
+                wishList) {
+            for (var item : items) {
+                if (item.getCategory().equals(w) && !item.isRent() && !item.isReserved()) {
+                    continue category;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
 
+
+    public void setItems(Vector<Item> items) {
+        this.items = items;
+    }
+
+    public void setSalesPerson(SalesPerson salesPerson) {
+        this.salesPerson = salesPerson;
+    }
+
+    public void setWebshop(WebShop webshop) {
+        this.webshop = webshop;
+    }
 }
