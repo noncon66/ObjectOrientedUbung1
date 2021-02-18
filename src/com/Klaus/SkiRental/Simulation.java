@@ -1,25 +1,42 @@
 package com.Klaus.SkiRental;
 
+import java.util.Vector;
+
 public class Simulation {
     public static void main(String[] args) {
 
-        Shop SkiSchuhTennis = Shop.getInstance();
-        WebShop SkiSchuhTennisOnline = WebShop.getInstance();
+        Shop skiSchuhTennis = Shop.getInstance();
+        WebShop skiSchuhTennisOnline = WebShop.getInstance();
         SalesPerson harry = new SalesPerson("Harry");
 
-        SkiSchuhTennis.setItems(SimulationFactory.createItems(10));
-        SkiSchuhTennis.setSalesPerson(harry);
-        SkiSchuhTennis.setWebshop(SkiSchuhTennisOnline);
+        skiSchuhTennis.setItems(SimulationFactory.createItems(10));
+        skiSchuhTennis.setSalesPerson(harry);
+        skiSchuhTennis.setWebShop(skiSchuhTennisOnline);
 
-        Customer customer = SimulationFactory.createCustomer();
-        //customer.tryToRent(SimulationFactory.createCategoriesToRent(), );
+        int errorCount = 0;
+        for (int i = 0; i < 1 && errorCount < 10; i++) {
+            try {
+                skiSchuhTennis.addCustomer(SimulationFactory.createCustomer());
+                errorCount = 0;
+            } catch (SameNameException e) {
+                i--;
+                errorCount++;
+            }
+        }
 
+        System.out.println(skiSchuhTennis.getCustomers().size());
 
+        int tick = 0;
+        while (tick < 1) {
+            Vector<Category> wishlist = SimulationFactory.createCategoriesToRent();
 
+            if (skiSchuhTennis.checkAvailability(wishlist)) {
+                skiSchuhTennis.getCustomers().elementAt(0).setReservation(skiSchuhTennis.makeReservation(wishlist));
+                skiSchuhTennis.rentReservation(skiSchuhTennis.getCustomers().elementAt(0).getReservation());
+            }
 
-
-
-
+                    tick++;
+        }
 
 
     }

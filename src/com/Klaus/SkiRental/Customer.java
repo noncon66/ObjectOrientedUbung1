@@ -15,4 +15,23 @@ public class Customer {
 
 
     }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
 }

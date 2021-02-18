@@ -14,4 +14,16 @@ public class Reservation {
         this.ticksSincePickUp = 0;
         this.ticksSinceReservation = 0;
     }
+
+    public void addItem(Item i){
+        items.add(i);
+    }
+
+    public Vector<Item> getItems() {
+        return items;
+    }
+
+    public void pickedUp(boolean wasPickedUp) {
+        this.wasPickedUp = wasPickedUp;
+    }
 }

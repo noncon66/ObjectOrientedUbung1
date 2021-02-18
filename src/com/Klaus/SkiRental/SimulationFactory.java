@@ -6,14 +6,25 @@ import java.util.Vector;
 public class SimulationFactory {
 
     private static Random random = new Random();
+    private static Vector<Customer> createdCustomers = new Vector<>();
 
-    public static Customer createCustomer() {
+    public static Customer createCustomer() throws SameNameException {
+
+        // TODO: 18.02.21 add exceprtion handling for same name
         String[] firstNames = {"Hans", "Doris", "Barbara", "Jakob", "Anna", "Klaus", "Julia", "Philipp", "Erna"};
         String[] lastNames = {"Maier", "Moser", "Gruber", "Müller", "Wagner", "Pichler", "Steiner", "Huber"};
         String name = firstNames[random.nextInt(firstNames.length)] + " " +
                 lastNames[random.nextInt(lastNames.length)];
+        for (var customer :
+                createdCustomers) {
+            if (customer.getName().equals(name)) {
+                throw new SameNameException("Der Name " + name + " existiert schon");
+            }
+        }
+        Customer c = new Customer(name);
+        createdCustomers.add(c);
 
-        return new Customer(name);
+        return c;
     }
 
     public static Vector<Item> createItems(int count) {

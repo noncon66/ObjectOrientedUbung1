@@ -29,4 +29,12 @@ public class Item {
     public boolean isReserved() {
         return isReserved;
     }
+
+    public void rent(boolean rent) {
+        isRent = rent;
+    }
+
+    public void reserve(boolean reserved) {
+        isReserved = reserved;
+    }
 }
