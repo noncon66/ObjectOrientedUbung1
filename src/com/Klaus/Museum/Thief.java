@@ -1,11 +1,13 @@
 package com.Klaus.Museum;
 
+import com.Klaus.Logging.LogType;
+import com.Klaus.Logging.SimpleLogger;
+
 import java.util.Random;
 
 public class Thief extends Visitor {
     private Random random = new Random();
-
-
+    SimpleLogger logger = SimpleLogger.getInstance();
 
     public Thief(String name, int age, String placeOfResidence) {
         super(name, age, placeOfResidence);
@@ -14,7 +16,7 @@ public class Thief extends Visitor {
     public void stealArtwork() {
         if (currentRoom.getVisitors().size()-1 == 0 /*& currentRoom.getGuard().equals(null)*/) {
             currentRoom.removeArtwork(currentArtwork);
-            System.out.println("****** " + getName() + " stiehlt Kunstwerk " + currentArtwork.getTitle() + " ******");
+            logger.log(LogType.ERROR,"****** " + getName() + " stiehlt Kunstwerk " + currentArtwork.getTitle() + " ******");
             leaveMuseum();
         }
     }

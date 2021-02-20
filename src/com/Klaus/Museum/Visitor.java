@@ -1,9 +1,13 @@
 package com.Klaus.Museum;
 
+import com.Klaus.Logging.LogType;
+import com.Klaus.Logging.SimpleLogger;
+
 import java.util.Random;
 
 public class Visitor {
     private static Random random = new Random();
+    SimpleLogger logger = SimpleLogger.getInstance();
 
     protected String name;
     protected int age;
@@ -27,7 +31,7 @@ public class Visitor {
 
         currentRoom = newRoom;
         currentRoom.addVisitor(this);
-        System.out.println(this.toStringShort() + " geht in Raum " + currentRoom.getRoomNumber());
+        logger.log(LogType.INFO, this.toStringShort() + " geht in Raum " + currentRoom.getRoomNumber());
         changeArtwork();
         return newRoom;
 
@@ -40,14 +44,14 @@ public class Visitor {
         } while (newArtwork.equals(currentArtwork));
 
         currentArtwork = newArtwork;
-        System.out.println(this.toStringShort() + " schaut jetzt \"" + currentArtwork.getTitle() + "\" an");
+        logger.log(LogType.INFO, this.toStringShort() + " schaut jetzt \"" + currentArtwork.getTitle() + "\" an");
         return newArtwork;
     }
 
     public void leaveMuseum() {
         currentMuseum = null;
         currentRoom = null;
-        System.out.println(this.toStringShort() + " verlässt das Museum");
+        logger.log(LogType.INFO, this.toStringShort() + " verlässt das Museum");
     }
 
     public void doSomething() {

@@ -1,9 +1,12 @@
 package com.Klaus.Museum;
 
+import com.Klaus.Logging.SimpleLogger;
+
 import java.util.Random;
 
 public class Artwork implements IPrintStructure{
     private static Random random = new Random();
+
 
     private String type;
     private String title;
