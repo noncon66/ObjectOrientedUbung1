@@ -12,10 +12,10 @@ public class SimulationFactory {
     public static Customer createCustomer() throws SameNameException {
 
         // TODO: 18.02.21 add exceprtion handling for same name
-        String[] firstNames = {"Hans", "Doris", "Barbara", "Jakob", "Anna", "Klaus", "Julia", "Philipp", "Erna"};
-        String[] lastNames = {"Maier", "Moser", "Gruber", "Müller", "Wagner", "Pichler", "Steiner", "Huber"};
-        //String[] firstNames = CSVNameListReader.names("firstnames.txt", ";");
-        //String[] lastNames = CSVNameListReader.names("lastnames.txt", ";");
+        //String[] firstNames = {"Hans", "Doris", "Barbara", "Jakob", "Anna", "Klaus", "Julia", "Philipp", "Erna"};
+        //String[] lastNames = {"Maier", "Moser", "Gruber", "Müller", "Wagner", "Pichler", "Steiner", "Huber"};
+        String[] firstNames = CSVNameListReader.names("/Users/klaus/IdeaProjects/ObjectOrientedUbung1/src/com/Klaus/SkiRental/firstnames.txt", ";");
+        String[] lastNames = CSVNameListReader.names("/Users/klaus/IdeaProjects/ObjectOrientedUbung1/src/com/Klaus/SkiRental/lastnames.txt", ";");
         String name = firstNames[random.nextInt(firstNames.length)] + " " +
                 lastNames[random.nextInt(lastNames.length)];
         for (var customer :

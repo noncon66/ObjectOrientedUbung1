@@ -14,7 +14,7 @@ public class Simulation {
         skiSchuhTennis.setWebShop(skiSchuhTennisOnline);
 
         int errorCount = 0;
-        for (int i = 0; i < 1 && errorCount < 10; i++) {
+        for (int i = 0; i < 100 && errorCount < 10; i++) {
             try {
                 skiSchuhTennis.addCustomer(SimulationFactory.createCustomer());
                 errorCount = 0;
@@ -27,7 +27,7 @@ public class Simulation {
         System.out.println(skiSchuhTennis.getCustomers().size());
 
         int tick = 0;
-        while (tick < 1) {
+        while (tick < 50) {
             Vector<Category> wishlist = SimulationFactory.createCategoriesToRent();
 
             if (skiSchuhTennis.checkAvailability(wishlist)) {
