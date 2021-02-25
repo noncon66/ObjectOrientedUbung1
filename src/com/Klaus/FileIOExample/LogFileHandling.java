@@ -1,12 +1,7 @@
 package com.Klaus.FileIOExample;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
@@ -21,7 +16,7 @@ public class LogFileHandling {
         String oldLogText = "old Log";
         Path recentLog = Paths.get(logFolder + fileName + fileExtension);
 
-        if (logExists(logFolder, fileName, fileExtension)) {
+        if (!logExists(logFolder, fileName, fileExtension)) {
             createRecent(logFolder, fileName, fileExtension);
 
         } else {
@@ -56,14 +51,15 @@ public class LogFileHandling {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //create new recent
 
+            //create new recent
+            createRecent(logFolder, fileName, fileExtension);
 
         }
 
     }
 
-    static boolean logExists(String folder, String fileName, String extension){
+    static boolean logExists(String folder, String fileName, String extension) {
         Path p = Paths.get(folder + fileName + extension);
         return Files.exists(p);
     }
