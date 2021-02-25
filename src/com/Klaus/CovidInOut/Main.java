@@ -21,14 +21,7 @@ public class Main {
                 if (item.getCountry().equals(country.getCountry())) {
                     country.addCases(item.getCases());
                 }
-
             }
-
-
         }
-
-
     }
-
-
 }
