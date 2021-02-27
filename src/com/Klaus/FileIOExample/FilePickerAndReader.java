@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 
 public class FilePickerAndReader {
     public static void main(String[] args) {
-
         String charset = "UTF-8";
         Scanner sc = new Scanner(System.in);
         String filename;
@@ -30,8 +29,6 @@ public class FilePickerAndReader {
             handleTestfiles(charset, filename, BASE_PATH);
         } else if (filename.contains("config")) {
             getConfig(filename, BASE_PATH);
-
-
         }
     }
 
@@ -72,16 +69,13 @@ public class FilePickerAndReader {
                         else config.put(kvPair[0], "");
                     }
             }
-
             System.out.println(config.toString());
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return config;
     }
+
 
     public static Object stringToObject(String str) {
         if (isBoolean(str)) {
