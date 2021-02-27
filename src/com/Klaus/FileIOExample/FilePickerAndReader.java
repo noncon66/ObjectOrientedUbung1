@@ -43,10 +43,6 @@ public class FilePickerAndReader {
             while ((line = in.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
